@@ -26,17 +26,11 @@ const scoreBoard = () => {
     console.log(`Player: ${playerScore} Computer:${computerScore}`)
 }
 
-
-const game = () => {
-    for (let i=0; i<5; i++) {
-        let computersChoice = randomComputersChoice()
-        let playersChoice = prompt("rock, paper or scissors")
-        playRound()
-        console.log(playRound(playersChoice, computersChoice))
-    } if (playerScore > computerScore) {
+const gameWinner = (playerScore, computerScore) => {
+    if (playerScore > computerScore) {
         console.log('****************************')
         console.log('Player wins the game')
-        scoreBoard()
+        scoreBoard()        
     } else if (computerScore > playerScore) {
         console.log('****************************')
         console.log('Computer wins the game')
@@ -48,5 +42,13 @@ const game = () => {
     }
 }
 
-game()
+const game = () => {
+    for (let i=0; i<5; i++) {
+        let computersChoice = randomComputersChoice()
+        let playersChoice = (prompt("rock, paper or scissors")).toLowerCase()
+        playRound()
+        console.log(playRound(playersChoice, computersChoice)) 
+    } return gameWinner (playerScore, computerScore)
+ }
 
+ game()
