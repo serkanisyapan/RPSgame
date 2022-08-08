@@ -1,20 +1,15 @@
-let playerScore = 0
-let computerScore = 0
+let playerScore = 0;
+let computerScore = 0;
+let playersChoice;
+let computersChoice;
+let buttons = document.querySelectorAll('.btn')
 
-const playRound = (playersChoice, computersChoice) => {
-    if (playersChoice === computersChoice) {
-        return 'Tie game'
-    } else if (
-    (computersChoice == "rock" && playersChoice == "scissors") ||
-    (computersChoice == "scissors" && playersChoice == "paper") ||
-    (computersChoice == "paper" && playersChoice == "rock")) {
-        computerScore += 1
-        return `Computer wins the round.`
-    } else {
-        playerScore += 1
-        return `You win the round.`
-    }
-}
+buttons.forEach((button) => {
+    button.addEventListener('click', ()=>{
+        playersChoice = (button.innerText).toLowerCase()
+        playRound(playersChoice, computersChoice)
+    })
+})
 
 const RPS = ["rock", "paper", "scissors"]
 
@@ -22,15 +17,30 @@ const randomComputersChoice = () => {
     return RPS[Math.floor(Math.random() * RPS.length)]
 }
 
-const scoreBoard = () => {
+function playRound(playersChoice, computersChoice) {
+    computersChoice = randomComputersChoice()
+    if (playersChoice === computersChoice) {
+        console.log('Tie round')
+    } else if ((computersChoice == "rock" && playersChoice == "scissors") ||
+        (computersChoice == "scissors" && playersChoice == "paper") ||
+        (computersChoice == "paper" && playersChoice == "rock")) {
+        computerScore += 1
+        console.log(`Computer wins the round.`)
+    } else {
+        playerScore += 1
+        console.log(`You win the round.`)
+    }
+}
+
+function scoreBoard() {
     console.log(`Player: ${playerScore} Computer:${computerScore}`)
 }
 
-const gameWinner = (playerScore, computerScore) => {
+function gameWinner(playerScore, computerScore) {
     if (playerScore > computerScore) {
         console.log('****************************')
         console.log('Player wins the game')
-        scoreBoard()        
+        scoreBoard()
     } else if (computerScore > playerScore) {
         console.log('****************************')
         console.log('Computer wins the game')
@@ -42,13 +52,15 @@ const gameWinner = (playerScore, computerScore) => {
     }
 }
 
-const game = () => {
-    for (let i=0; i<5; i++) {
-        let computersChoice = randomComputersChoice()
-        let playersChoice = (prompt("rock, paper or scissors")).toLowerCase()
-        playRound()
-        console.log(playRound(playersChoice, computersChoice)) 
-    } return gameWinner (playerScore, computerScore)
- }
 
- game()
+
+// function game() {
+//     for (let i = 0; i < 5; i++) {
+//         let computersChoice = randomComputersChoice()
+//         let playersChoice = (prompt("rock, paper or scissors")).toLowerCase()
+//         playRound()
+//         console.log(playRound(playersChoice, computersChoice))
+//     } return gameWinner(playerScore, computerScore)
+// }
+
+//  game()
