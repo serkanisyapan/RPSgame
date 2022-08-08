@@ -6,11 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RPS</title>
     <script src="app.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <h1>RPS Game of the Year</h1>
-    <button id="rock" class="btn">Rock</button>
-    <button id="paper" class="btn">Paper</button>
-    <button id="scissors" class="btn">Scissors</button>
+    <div id="container">
+      <figure id="rock" class="btn">
+        <img src="images/stone.png" alt="" />
+      </figure>
+      <figure id="paper" class="btn">
+        <img src="images/paper.png" alt="" />
+      </figure>
+      <figure id="scissors" class="btn">
+        <img src="images/scissors.png" alt="" />
+      </figure>
+    </div>
+    <h1><span id="p1-score">0</span> to <span id="p2-score">0</span></h1>
+    <h3>Start the game by choosing rock, paper or scissors</h3>
   </body>
 </html>
