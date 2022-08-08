@@ -6,3 +6,11 @@ img {
     width: 150px;
     height: 150px;
 }
+
+.winner {
+    color: green;
+}
+
+.loser {
+    color: red;
+}

@@ -1,14 +1,25 @@
-let playerScore = 0
-let computerScore= 0
-let gameText = document.querySelector('h3')
+let playerScore = 0;
+let computerScore= 0;
+let winningScore = 5;
 let playersChoice;
 let computersChoice;
-let buttons = document.querySelectorAll('.btn')
+let buttons = document.querySelectorAll('.btn');
+let isGameOver = false;
+const gameText = document.querySelector('h3');
+const computerScoreDisplay = document.querySelector('#p2-score');
+const playerScoreDisplay = document.querySelector('#p1-score');
 
 buttons.forEach((button) => {
     button.addEventListener('click', ()=>{
-        playersChoice = button.id
-        playRound(playersChoice, computersChoice)
+        if (!isGameOver) {
+        playersChoice = button.id;
+        playRound(playersChoice, computersChoice);
+        if (playerScore === winningScore || computerScore === winningScore) {
+            isGameOver = true
+            decideWinner();
+
+        }
+        }
     })
 })
 
@@ -19,44 +30,40 @@ const randomComputersChoice = () => {
 }
 
 function playRound(playersChoice, computersChoice) {
-    computersChoice = randomComputersChoice()
+    computersChoice = randomComputersChoice();
     if (playersChoice === computersChoice) {
-        gameText.innerText = 'Tie round'
+        gameText.innerText = 'Tie round';
     } else if ((computersChoice == "rock" && playersChoice == "scissors") ||
         (computersChoice == "scissors" && playersChoice == "paper") ||
         (computersChoice == "paper" && playersChoice == "rock")) {
         computerScore+=1;
         keepComputerScore();
-        gameText.innerText = 'Computer wins the round.'
+        gameText.innerText = 'Computer wins the round.';
     } else {
         playerScore+=1;
         keepPlayerScore();
-        gameText.innerText = 'Player wins the round.'
+        gameText.innerText = 'Player wins the round.';
     }
 }
 
-function scoreBoard() {
-    console.log(`Player: ${playerScore} Computer:${computerScore}`)
-}
+function decideWinner() {
+        if (playerScore > computerScore){
+            gameText.innerText = 'PLAYER WINS THE GAME';
+            playerScoreDisplay.classList.add('winner');
+            computerScoreDisplay.classList.add('loser');
+        } else {
+            gameText.innerText = 'COMPUTER WINS THE GAME';
+            playerScoreDisplay.classList.add('loser');
+            computerScoreDisplay.classList.add('winner');
+        }
+    }
 
 
 function keepPlayerScore () {
-    let playerScoreDisplay = document.querySelector('#p1-score')
-    playerScoreDisplay.textContent = playerScore
+    playerScoreDisplay.textContent = playerScore;
+    
 }
 
 function keepComputerScore () {
-    let computerScoreDisplay = document.querySelector('#p2-score')
-    computerScoreDisplay.textContent = computerScore
+    computerScoreDisplay.textContent = computerScore;
 }
-
-// function game() {
-//     for (let i = 0; i < 5; i++) {
-//         let computersChoice = randomComputersChoice()
-//         let playersChoice = (prompt("rock, paper or scissors")).toLowerCase()
-//         playRound()
-//         console.log(playRound(playersChoice, computersChoice))
-//     } return gameWinner(playerScore, computerScore)
-// }
-
-//  game()
