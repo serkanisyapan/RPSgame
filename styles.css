@@ -2,26 +2,42 @@ body {
     text-align: center;
 }
 
-.btn {
-    display: inline-block;
-}
-
 img {
     width: 150px;
     height: 150px;
-    transition: all 0.5s;
+    transition: all 0.3s;
 }
 
 img:hover {
     transform: translateY(-5px); 
-    box-shadow: 3px 3px red;
+    box-shadow: 0 0 20px #ffa260;
     cursor: pointer;
 }
 
+.btn {
+    display: inline-block;
+}
+
 .winner {
-    color: green;
+    color: #7DCE13;
 }
 
 .loser {
-    color: red;
+    color: #FF1E00;
+}
+
+.reset-button {
+    background: none;
+    color: #ffa260;
+    border: 2px solid;
+    padding: 10px 10px;
+    font-size: 1em;
+}
+
+.reset-button:hover {
+    cursor: pointer;
+    border-color: #f1ff5c;
+    color: white;
+    box-shadow: 4px 2px 2px #f1ff5c;
+    transform: translateY(-0.25em);
 }

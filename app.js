@@ -3,11 +3,14 @@ let computerScore= 0;
 let winningScore = 5;
 let playersChoice;
 let computersChoice;
-let buttons = document.querySelectorAll('.btn');
 let isGameOver = false;
 const gameText = document.querySelector('h3');
 const computerScoreDisplay = document.querySelector('#p2-score');
 const playerScoreDisplay = document.querySelector('#p1-score');
+const buttons = document.querySelectorAll('.btn');
+const resetButton = document.querySelector('.reset-button')
+
+resetButton.addEventListener('click', reset)
 
 buttons.forEach((button) => {
     button.addEventListener('click', ()=>{
@@ -66,4 +69,15 @@ function keepPlayerScore () {
 
 function keepComputerScore () {
     computerScoreDisplay.textContent = computerScore;
+}
+
+function reset () {
+    isGameOver = false;
+    playerScore = 0;
+    computerScore = 0;
+    playerScoreDisplay.textContent = 0;
+    computerScoreDisplay.textContent = 0;
+    playerScoreDisplay.classList.remove('winner', 'loser');
+    computerScoreDisplay.classList.remove('winner', 'loser');
+    gameText.innerText = 'Start the game by choosing rock, paper or scissors';
 }
