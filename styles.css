@@ -1,5 +1,7 @@
 body {
     text-align: center;
+    background-color: black;
+    color:white;
 }
 
 img {
@@ -10,7 +12,7 @@ img {
 
 img:hover {
     transform: translateY(-5px); 
-    box-shadow: 0 0 20px #ffa260;
+    box-shadow: 0 0 20px #f1ff5c;
     cursor: pointer;
 }
 
@@ -32,6 +34,7 @@ img:hover {
     border: 2px solid;
     padding: 10px 10px;
     font-size: 1em;
+    transition: all 0.3s;
 }
 
 .reset-button:hover {

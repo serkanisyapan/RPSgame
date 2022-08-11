@@ -51,16 +51,24 @@ function playRound(playersChoice, computersChoice) {
 
 function decideWinner() {
         if (playerScore > computerScore){
-            gameText.innerText = 'PLAYER WINS THE GAME';
-            playerScoreDisplay.classList.add('winner');
-            computerScoreDisplay.classList.add('loser');
+            playerWins()
         } else {
-            gameText.innerText = 'COMPUTER WINS THE GAME';
-            playerScoreDisplay.classList.add('loser');
-            computerScoreDisplay.classList.add('winner');
+            computerWins()
         }
     }
 
+function playerWins () {
+    gameText.innerText = 'PLAYER WINS THE GAME';
+    playerScoreDisplay.classList.add('winner');
+    computerScoreDisplay.classList.add('loser');
+}
+
+function computerWins() {
+    gameText.innerText = 'COMPUTER WINS THE GAME';
+    playerScoreDisplay.classList.add('loser');
+    computerScoreDisplay.classList.add('winner');
+
+}
 
 function keepPlayerScore () {
     playerScoreDisplay.textContent = playerScore;
@@ -75,8 +83,8 @@ function reset () {
     isGameOver = false;
     playerScore = 0;
     computerScore = 0;
-    playerScoreDisplay.textContent = 0;
-    computerScoreDisplay.textContent = 0;
+    keepPlayerScore();
+    keepComputerScore();
     playerScoreDisplay.classList.remove('winner', 'loser');
     computerScoreDisplay.classList.remove('winner', 'loser');
     gameText.innerText = 'Start the game by choosing rock, paper or scissors';
